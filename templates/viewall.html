@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/image5.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .head{
+            text-align: center;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .head1{
+            position: relative;
+            color: navajowhite;
+            font-size: 23px;
+            font-weight: normal;
+            padding-top: 15px;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .head2{
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .head4{
+            position: relative;
+            color: white;
+            padding-bottom: 30px;
+        }
+
+        .homes{
+            position: relative;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .homes:hover{
+            background-color: dodgerblue;
+        }
+
+        @media screen and (max-width:1000px){
+            .head2{
+                padding-top: 0px;
+            }
+
+            .head1{
+                font-size: 17px;
+                padding-top: 10px;
+            }
+
+            .head4{
+                padding-bottom: 20px;
+            }
+
+            .homes{
+                font-size: 15px;
+            }
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<div class="head">
+{% for x in data %}
+ <div class="head2">
+    <div class="head1">Name:
+        {{ x.Name }}
+    </div>
+    <div class="head1">UserName:
+        {{ x.UserName }}
+    </div>
+    <div class="head1">Description of Place:
+        {{ x.Comments }}
+    </div>
+    <div class="head1">
+        <a href="{{ x.Uploads.url }}">
+            <img src="{{ x.Uploads.url }}" style="border-radius: 15px; height: 250px; width: 180px">
+        </a>
+    </div>
+        <br>
+    <br>
+</div>
+{% endfor %}
+<div class="home1">
+    <a href="#" class="homes">Main Page</a>
+</div>
+</div>
+</body>
+</html>

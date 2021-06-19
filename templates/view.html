@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/image4.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .tree{
+            text-align: center;
+            position: relative;
+            top: 100px;
+        }
+
+        .tree1{
+            font-size: 35px;
+            color: whitesmoke;
+        }
+
+        .tree3{
+            margin: 10px auto;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: whitesmoke;
+            font-size: 25px;
+            font-weight: normal;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .del1{
+            position: relative;
+            top: 20px;
+            right: 70px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .del1:hover{
+            background-color: dodgerblue;
+        }
+        .homes{
+            position: relative;
+            left: 70px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .homes:hover{
+            background-color: dodgerblue;
+        }
+
+        @media screen and (max-width:1000px){
+            .tree{
+                top: 50px;
+            }
+
+            .tree1{
+                font-size: 20px;
+                color: whitesmoke;
+            }
+            .tree3{
+                margin: 10px auto;
+                width: 100%;
+                padding-top: 10px;
+                padding-bottom: 5px;
+                color: whitesmoke;
+                font-size: 15px;
+                font-weight: normal;
+                font-family: 'Kaushan Script', cursive;
+            }
+
+            .del1{
+                font-size: 15px;
+            }
+
+            .homes{
+                font-size: 14px;
+            }
+        }
+    </style>
+    <title>View</title>
+</head>
+<body>
+<div class="tree">
+    <div class="tree1">
+        <h1 class="tree2">Welcome Dear {{ name|capfirst }}</h1>
+    </div>
+    <div class="tree3">
+        Name:   {{ data.Name }}
+    </div>
+    <div class="tree3">
+        Username:   {{ data.UserName }}
+    </div>
+    <div class="tree3">
+        Comments:    {{ data.Comments }}
+    </div>
+    <div class="tree3">
+        <a href="{{ data.Uploads.url }}">
+            <img src="{{ data.Uploads.url }}" style="border-radius: 15px; height: 250px; width: 180px">
+        </a>
+    </div>
+    <div class="del">
+        <a href="{% url 'delete' %}?no={{ data.UserName }}" class="del1">Delete</a>
+    </div>
+    <div class="home1">
+        <a href="#" class="homes">Main Page</a>
+    </div>
+</div>
+</body>
+</html>

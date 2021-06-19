@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/image7.png' %});
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .root2{
+            text-align: center;
+            padding-top: 100px;
+            color: dodgerblue;
+        }
+
+        .root3{
+            margin: 30px auto;
+            width: 35%;
+            border-bottom: 2px solid;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: whitesmoke;
+        }
+
+        .root3 input{
+            width: 90%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: whitesmoke;
+        }
+
+        ::placeholder{
+            color: whitesmoke;
+            font-size: 17px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        .submit{
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .submit1{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: dodgerblue;
+        }
+
+        .msg{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+        .log{
+            position: relative;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center  ;
+        }
+
+        .home{
+            position: relative;
+            font-size: 20px;
+            color: black;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 7px 22px;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+
+        .home:hover{
+            background-color: cornflowerblue;
+        }
+
+        @media screen and (max-width:1000px){
+            .root2{
+                padding-top: 60px;
+                font-size: 30px;
+            }
+
+            .root3{
+                margin: 25px auto;
+                width: 70%;
+            }
+
+            .root3 input{
+                width: 100%;
+            }
+
+            ::placeholder{
+                font-size: 13px;
+                font-weight: normal;
+            }
+
+            .submit1{
+                font-size: 15px;
+                font-weight: normal;
+            }
+        }
+    </style>
+    <title>Uplaods</title>
+</head>
+<body>
+<form action="{% url 'home_save' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="root">
+    <div class="root1">
+        <h1 class="root2">Upload Here Please</h1>
+    </div>
+    <div class="root3">
+        <input type="text" placeholder="Enter your Name Please" required name="a1">
+    </div>
+    <div class="root3">
+        <input type="text" placeholder="Please Use Your Registered Mob, Email, User" required name="a2">
+    </div>
+    <div class="root3">
+        <input type="text" placeholder="Comments" required name="a3">
+    </div>
+    <div class="root3">
+        <input type="file" placeholder="Share your fav pics or vids" required name="a4">
+    </div>
+    <div class="submit">
+        <button type="submit" class="submit1">ADD</button>
+    </div>
+    <div class="msg">
+        {% for x in messages %}
+            {{ x }}
+        {% endfor %}
+    </div>
+    <div class="log">
+        <a href="#" class="home">Main Page</a><a href="{% url 'register' %}" class="log1">Logout</a>
+    </div>
+</div>
+</form>
+</body>
+</html>

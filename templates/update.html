@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/image6.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .leaf1{
+            position: relative;
+            color: antiquewhite;
+            font-size: 50px;
+            text-align: center;
+            animation-name: update;
+            animation-duration: 4s;
+        }
+
+        @keyframes update {
+            0% {left: -150px}
+            50% {left: 0px}
+        }
+
+        .leaf{
+            text-align: center;
+            position: relative;
+            padding-top: 50px;
+        }
+
+        .leaf2{
+            margin: 25px auto;
+            width: 30%;
+            border-bottom: 2px solid;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            color: rgba(0,0,0,0.3);
+        }
+
+        .leaf2 input{
+            width: 50%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: black;
+        }
+
+        .leaf3{
+            position: relative;
+            color: dodgerblue;
+            font-size: 30px;
+            font-weight: bold;
+            padding-bottom: 30px;
+        }
+
+        .but1{
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .buttons1{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: dodgerblue;
+        }
+
+        .message1{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+        @media screen and (max-width:1000px){
+            .leaf3{
+                font-size: 25px;
+                padding-bottom: 20px;
+            }
+
+            .leaf1{
+                font-size: 37px;
+            }
+
+            .leaf{
+                padding-top: 15px;
+            }
+
+            .leaf2{
+                width: 100%;
+            }
+
+            .leaf2 input{
+                width: 50%;
+            }
+
+            .buttons1{
+                font-size: 15px;
+                font-weight: normal;
+            }
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<h1 class="leaf1">Welcome Dear {{ name|capfirst }}</h1>
+<form action="{% url 'update_save' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="leaf">
+    <div class="leaf3">
+        Edit your Uploads Happily and Safely
+    </div>
+    <div class="leaf2">
+        <span style="color: navajowhite">Name:</span>
+        <input type="text" value="{{ data.Name }}" required name="u1">
+    </div>
+    <div class="leaf2">
+        <span style="color: navajowhite">UserName:</span>
+        <input type="text" value="{{ data.UserName }}" required name="u2">
+    </div>
+    <div class="leaf2">
+        <span style="color: navajowhite">Comments:</span>
+        <input type="text" value="{{ data.Comments }}" required name="u3">
+    </div>
+    <div class="leaf2">
+        <span style="color: navajowhite">Uploaded File:</span>
+        <input type="file" value="{{ data.Uploads.url }}" required name="u4">
+    </div>
+    <div class="but1">
+        <button type="submit" class="buttons1">Upload</button>
+    </div>
+    <div class="message1">
+        {% for x in messages %}
+            {{ x }}
+        {% endfor %}
+    </div>
+</div>
+</form>
+</body>
+</html>

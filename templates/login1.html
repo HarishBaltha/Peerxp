@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/image5.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .log{
+            position: relative;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .log1{
+            position: relative;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            margin-left: 10px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+            margin-top: 100px;
+        }
+
+        .log1:hover{
+            background-color: dodgerblue;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .home{
+            position: relative
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .home:hover{
+            background-color: dodgerblue;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .stem{
+            text-align: center;
+            position: relative;
+            top: 150px;
+        }
+
+        .stem1{
+            position: relative;
+            color: antiquewhite;
+            font-size: 50px;
+            animation-name: user;
+            animation-duration: 4s;
+        }
+
+        @keyframes user {
+            0% {left: -150px}
+            50% {left: 0px}
+        }
+
+        .stem2{
+            position: relative;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: navajowhite;
+            padding-top: 10px;
+        }
+
+        .stem3{
+            position: relative;
+            margin: 30px;
+        }
+
+        .upload{
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .upload:hover{
+            background-color: dodgerblue;
+        }
+
+        .view{
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .view:hover{
+            background-color: dodgerblue;
+        }
+
+        .update{
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .update:hover{
+            background-color: dodgerblue;
+        }
+
+        .viewall{
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 7px 22px;
+            border: 1px solid white;
+            border-radius: 15px;
+        }
+
+        .viewall:hover{
+            background-color: dodgerblue;
+        }
+
+        @media screen and (max-width:1000px){
+            .stem{
+                top: 80px;
+            }
+
+            .stem1{
+                font-size: 30px;
+            }
+
+            .stem2{
+                font-size: 13px;
+                font-weight: normal;
+                padding-top: 10px;
+            }
+        }
+    </style>
+    <title>Login</title>
+</head>
+<body>
+<div class="stem">
+    <h1 class="stem1">Welcome to Home Page Dear {{ name|capfirst }}</h1>
+    <div class="stem2">
+        <div class="stem3">
+        <a href="{% url 'home' %}" class="upload">Add Hashtags</a>
+        </div>
+        <div class="stem3">
+        <a href="{% url 'view' %}?un={{ name }}" class="view">View Your Hashtags</a>
+        </div>
+        <div class="stem3">
+        <a href="{% url 'update' %}?un={{ name }}" class="update">Edit your Hashtags</a>
+        </div>
+        <div class="stem3">
+        <a href="{% url 'viewall' %}?name={{ name }}" class="viewall">View Every</a>
+        </div>
+    </div>
+    <div class="log">
+        <a href="#" class="home">Main Page</a><a href="{% url 'register' %}" class="log1">Logout</a>
+    </div>
+</div>
+</body>
+</html>

